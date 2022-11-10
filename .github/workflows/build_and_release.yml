@@ -29,6 +29,7 @@ jobs:
     - run: npm run build --if-present
     #- run: npm test
     
+    
    # Login in Yandex Cloud
     - name: Yandex Cloud CR "Login" Action for GitHub Actions
       uses: yc-actions/yc-cr-login@v0.1-alpha
