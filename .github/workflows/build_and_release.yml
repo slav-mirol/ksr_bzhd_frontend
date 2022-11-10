@@ -34,7 +34,7 @@ jobs:
     - name: Yandex Cloud CR "Login" Action for GitHub Actions
       uses: yc-actions/yc-cr-login@v0.1-alpha
       with:
-        yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        yc-sa-json-credentials: ${{ secrets.YC_REGISTRY_SECRET }}
         
     - name: Build, tag, and push image to Yandex Cloud Container Registry
       env:
