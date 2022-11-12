@@ -139,6 +139,10 @@ main {
     color: #7D29EC;
 }
 
+a {
+    text-decoration: none;
+}
+
 button {
     display: flex;
     justify-content: center;
