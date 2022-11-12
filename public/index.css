@@ -22,7 +22,8 @@ body {
     /* Браузер сначала попробует найти шрифт локально */
     src: local("KyivType Sans"),
          /* Если не получилось, загрузит woff2 */
-         url("./fonts/KyivTypeSans-VarGX.woff2") format("woff2");
+         /* url("./fonts/KyivTypeSans-VarGX.woff2") format("woff2"); */
+         url("./fonts/KyivTypeSans-Regular-.woff") format("woff");
          /* Если браузер не поддерживает woff2, загрузит woff */
          /* url("/fonts/roboto.woff") format("woff"); */
 }
