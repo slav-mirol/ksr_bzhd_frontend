@@ -13,3 +13,15 @@ body {
     height: 100%;
     width: 100%;
 }
+
+@font-face {
+    font-family: 'KyivType Sans';
+    font-style: normal;
+    font-weight: 350;
+    /* Браузер сначала попробует найти шрифт локально */
+    src: local("KyivType Sans"),
+         /* Если не получилось, загрузит woff2 */
+         url("./fonts/KyivTypeSans-VarGX.woff2") format("woff2");
+         /* Если браузер не поддерживает woff2, загрузит woff */
+         /* url("/fonts/roboto.woff") format("woff"); */
+}

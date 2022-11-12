@@ -7,16 +7,19 @@ import './App.css'
 const App = (props) => {
     return (
       <main>
-        <div class='background-pictures-wrapper'>
-          <div class='left-picture-wrapper'>
+        <div class='main-wrapper'>
+          <section class='left-wrapper'>
             <img class='left-picture' src={LeftPicture} alt='Левая загагуля'/>
-          </div>
-          <div class='mid-picture-wrapper'>
+          </section>
+          <section class='mid-wrapper'>
             <img class='mid-picture' src={MidPicture} alt='Центральная загагуля'/>
-          </div>
-          <div class='right-picture-wrapper'>
+            <div class='mid-wrapper__title title'>а <span class='mid-wrapper__title_background-color'>чё</span> надо то?</div>
+            <div class='mid-wrapper__subtitle subtitle'>/когда лень думать самому/</div>
+            <div class='mid-wrapper__subsubtitle subtitle'>помощь в выборе <span class='mid-wrapper__subsubtitle_pink-color'>УЗО</span> и <span class='mid-wrapper__subsubtitle_purple-color'>автоматических выключателей</span></div>
+          </section>
+          <section class='right-wrapper'>
             <img class='right-picture' src={RightPicture} alt='Правая загагуля'/>
-          </div>
+          </section>
         </div>
       </main>
     );
