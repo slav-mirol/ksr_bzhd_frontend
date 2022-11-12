@@ -14,6 +14,8 @@ const App = (props) => {
           <section class='mid-wrapper'>
             <img class='mid-picture' src={MidPicture} alt='Центральная загагуля'/>
             <div class='mid-wrapper__title title'>а <span class='mid-wrapper__title_background-color'>чё</span> надо то?</div>
+            <div class='mid-wrapper__subtitle subtitle'>/когда лень думать самому/</div>
+            <div class='mid-wrapper__subsubtitle subtitle'>помощь в выборе <span class='mid-wrapper__subsubtitle_pink-color'>УЗО</span> и <span class='mid-wrapper__subsubtitle_purple-color'>автоматических выключателей</span></div>
           </section>
           <section class='right-wrapper'>
             <img class='right-picture' src={RightPicture} alt='Правая загагуля'/>
