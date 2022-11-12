@@ -7,16 +7,17 @@ import './App.css'
 const App = (props) => {
     return (
       <main>
-        <div class='background-pictures-wrapper'>
-          <div class='left-picture-wrapper'>
+        <div class='main-wrapper'>
+          <section class='left-wrapper'>
             <img class='left-picture' src={LeftPicture} alt='Левая загагуля'/>
-          </div>
-          <div class='mid-picture-wrapper'>
+          </section>
+          <section class='mid-wrapper'>
             <img class='mid-picture' src={MidPicture} alt='Центральная загагуля'/>
-          </div>
-          <div class='right-picture-wrapper'>
+            <div class='mid-wrapper__title title'>а <span class='mid-wrapper__title_background-color'>чё</span> надо то?</div>
+          </section>
+          <section class='right-wrapper'>
             <img class='right-picture' src={RightPicture} alt='Правая загагуля'/>
-          </div>
+          </section>
         </div>
       </main>
     );
