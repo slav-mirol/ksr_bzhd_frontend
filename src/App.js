@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import LeftPicture from './assets/leftPicture.png';
-import MidPicture from './assets/midPicture.png';
-import RightPicture from './assets/rightPicture.png';
-
+import LeftPicture from './assets/leftPicture.svg';
+import MidPicture from './assets/midPicture.svg';
+import RightPicture from './assets/rightPicture.svg';
+import './App.css'
 
 const App = (props) => {
     return (
-      <div className="App">
-        <img src={LeftPicture} />
-        <img src={MidPicture} />
-        <img src={RightPicture} />
-        <div>Тут начинаем писать уже свои теги и так далее, див с className App не трогаем</div>
-      </div>
+      <main>
+        <div class='background-pictures-wrapper'>
+          <div class='left-picture-wrapper'>
+            <img class='left-picture' src={LeftPicture} alt='Левая загагуля'/>
+          </div>
+          <div class='mid-picture-wrapper'>
+            <img class='mid-picture' src={MidPicture} alt='Центральная загагуля'/>
+          </div>
+          <div class='right-picture-wrapper'>
+            <img class='right-picture' src={RightPicture} alt='Правая загагуля'/>
+          </div>
+        </div>
+      </main>
     );
 }
 
