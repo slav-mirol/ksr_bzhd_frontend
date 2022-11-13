@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import LeftPicture from './assets/leftPicture.svg';
-import MidPicture from './assets/midPicture.svg';
-import RightPicture from './assets/rightPicture.svg';
-import './App.css'
+import React from 'react';
+import { Route, Routes} from "react-router-dom";
+import Calculator from './calculator/Calculator';
+import Home from './home/Home';
 
 const App = (props) => {
-    return (
-      <main>
-        <div class='main-wrapper'>
-          <section class='left-wrapper'>
-            <img class='left-picture' src={LeftPicture} alt='Левая загагуля'/>
-          </section>
-          <section class='mid-wrapper'>
-            <img class='mid-picture' src={MidPicture} alt='Центральная загагуля'/>
-            <div class='mid-wrapper__title title'>а <span class='mid-wrapper__title_background-color'>чё</span> надо то?</div>
-            <div class='mid-wrapper__subtitle subtitle'>/когда лень думать самому/</div>
-            <div class='mid-wrapper__subsubtitle subtitle'>помощь в выборе <span class='mid-wrapper__subsubtitle_pink-color'>УЗО</span> и <span class='mid-wrapper__subsubtitle_purple-color'>автоматических выключателей</span></div>
-          </section>
-          <section class='right-wrapper'>
-            <img class='right-picture' src={RightPicture} alt='Правая загагуля'/>
-          </section>
-        </div>
-      </main>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/calculator" element={<Calculator />} />
+    </Routes>
+  );
 }
 
 export default App;
