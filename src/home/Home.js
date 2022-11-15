@@ -13,10 +13,12 @@ const Home = (props) => {
       window.addEventListener('scroll', event => {
         requestAnimationFrame(() => {
           //const rotation = window.scrollY / 10 % Math.PI;
-          const leftRotation = window.scrollY / 10;
-          leftPictureRef.current.style.transform = `rotate(${leftRotation}deg)`;
-          const rightRotation = -window.scrollY / 10;
-          rightPictureRef.current.style.transform = `rotate(${rightRotation}deg)`;
+          if (leftPictureRef && leftPictureRef.current) {
+            const leftRotation = window.scrollY / 10;
+            leftPictureRef.current.style.transform = `rotate(${leftRotation}deg)`;
+            const rightRotation = -window.scrollY / 10;
+            rightPictureRef.current.style.transform = `rotate(${rightRotation}deg)`;
+          }
         });
       });
     }, []);
@@ -33,7 +35,7 @@ const Home = (props) => {
             <div className='mid-wrapper__subtitle subtitle'>/когда лень думать самому/</div>
             <div className='mid-wrapper__subsubtitle subtitle'>помощь в выборе <span className='mid-wrapper__subsubtitle_pink-color'>УЗО</span> и <span className='mid-wrapper__subsubtitle_purple-color'>автоматических выключателей</span></div>
             <Link to="/calculator">
-                <button>
+                <button className='button-start'>
                     <div className='button-text'>НАЧАТЬ</div>
                 </button>
             </Link>
