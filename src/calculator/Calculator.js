@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 //import Bicyclist from '../bicyclist/Bicyclist';
 import './Calculator.css';
 import Lines from './components/Lines';
@@ -7,6 +7,7 @@ import AddLine from './components/AddLine'
 class Calculator extends React.Component {
   constructor(props) {
     super(props)
+    this.count = 0;
     this.state = { lines: [] }
     this.addLine = this.addLine.bind(this)
     this.deleteLine = this.deleteLine.bind(this)
@@ -24,10 +25,14 @@ class Calculator extends React.Component {
   }
 
   addLine() {
-    const id = this.state.lines.length + 1;
+    this.count += 1
+    let cur_line = {
+      id: this.count,
+      devices: []
+    }
     this.setState({
       lines: [
-        ...this.state.lines,{ id, devises: [] }
+        ...this.state.lines, cur_line
       ]
     })
   }
@@ -35,18 +40,9 @@ class Calculator extends React.Component {
 
   deleteLine(num) {
     this.setState({
-        lines: this.state.lines.filter((el) => el.id !== num),
-    })
-    let allLines = this.state.lines.filter((el) => el.id !== num);
-    allLines.map((elem) => {
-      if (elem.id>num) {
-        elem.id -= 1
-      } 
-      return allLines
+        lines: this.state.lines.filter((el) => el.id !== num)
     })
   }
-
-  
 }
 
 export default Calculator;

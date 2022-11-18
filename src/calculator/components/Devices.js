@@ -9,7 +9,6 @@ class Devices extends React.Component {
             {this.props.devices.map((elem) => (
               <Device onDelete={this.props.onDelete} key={elem.id} device={elem}/>
             ))}
-            
           </div>
         )
       } else {

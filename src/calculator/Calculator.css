@@ -11,6 +11,7 @@
 }
 
 .Vatts_text {
+    padding-left: 10px;
     font-size: 44px;
     margin: 0px;
     color: rgba(241, 86, 155, 1);
@@ -18,19 +19,43 @@
 
 .row-btn-line{
     display: grid;
-    grid-template-columns: 1fr 11fr;
+    grid-template-columns: 77px 1fr;
     grid-template-rows: auto;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 
 }
 
+.row-btn-device {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.edit-line{
+    display: flex;
+    grid-template-rows: auto;
+    justify-content: start;
+    align-items: flex-end;
+}
+
 .background-line {
+    display: flex;
+    flex-direction: row;
     width: 55%;
     padding: 15px;
     height: 86px;
     border-radius: 60px;
     background: linear-gradient(45deg, #E141D5 33%, #6725EB);
+}
+
+.background-device {
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+    padding: 15px;
+    height: 86px;
 }
 
 .line {
@@ -47,7 +72,6 @@
 
 
 .background-addLine {
-    width: 55%;
     padding: 15px;
     height: 86px;
 }
@@ -80,6 +104,7 @@
 }
 
 .left_margin {
+    padding-top: 10px;
     margin-left: 162px;
 }
 
@@ -114,4 +139,19 @@
     font-style: normal;
     color: rgba(0, 0, 0, 0.4);
 
+}
+
+.devices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 150px;
+}
+
+.row-btn-device {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
 }
