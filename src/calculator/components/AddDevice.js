@@ -1,4 +1,9 @@
 import React from 'react'
+import axios from 'axios'
+import {MDCTextField} from '@material/textfield';
+import { Autocomplete } from "@autocomplete/material-ui";
+
+const baseUrl = "http://51.250.20.116/api/device?query="
 
 class AddDevice extends React.Component {
     constructor(props) {
@@ -10,13 +15,19 @@ class AddDevice extends React.Component {
         }
       };
     }
-  
+
+    listOfDevices = []
     render() {
       return (
         <div>
           <div className='row-btn-device'>
               <input className='input_name' placeholder='Название'
               onChange={(e) => {
+                const curUrl = baseUrl + e.target.value
+                comboBox(curUrl)
+                // axios.get(curUrl).then((res) => {
+                //   console.log(res.data)
+                // })
                 this.setState({
                   deviceAdd: {
                     name: e.target.value,
@@ -24,6 +35,9 @@ class AddDevice extends React.Component {
                   }
                 })
               }}/>
+            
+              
+
               <div className='grid_power_input'>
                   <input className='input_power' placeholder='Мощность'
                   onChange={(e) => {
@@ -40,7 +54,7 @@ class AddDevice extends React.Component {
           <div className='row-btn-device'>
             <button className="plus-line-btn"
             onClick={() => {
-              
+
               this.props.onAdd(this.state.deviceAdd.name, this.state.deviceAdd.power)
             }}>
               <div className="plus-btn__icon">
