@@ -1,14 +1,13 @@
 import React from 'react'
-import axios from 'axios'
-import {MDCTextField} from '@material/textfield';
-import { Autocomplete } from "@autocomplete/material-ui";
-
-const baseUrl = "http://51.250.20.116/api/device?query="
+import SearchInput from './SearchInput';
+import { getApiSuggestions } from './requests';
 
 class AddDevice extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        options: [],
+        loading: false,
         deviceAdd: {
             name: '',
             power: 0
@@ -16,41 +15,40 @@ class AddDevice extends React.Component {
       };
     }
 
+    getSuggestions = async (word) => {
+      if (word) {
+          this.setState({loading:true});
+          let response = await getApiSuggestions(word);
+          this.setState({options:response});
+          this.setState({loading:false});
+      } else {
+        this.setState({options:[]});
+      }
+    };
+
+    pickValue = (dev) => {
+      this.setState({
+        loading: false,
+        options: [],
+        deviceAdd: {
+          name: dev.name,
+          power: dev.power
+        }
+      });
+    };
+
     listOfDevices = []
     render() {
       return (
         <div>
-          <div className='row-btn-device'>
-              <input className='input_name' placeholder='Название'
-              onChange={(e) => {
-                const curUrl = baseUrl + e.target.value
-                comboBox(curUrl)
-                // axios.get(curUrl).then((res) => {
-                //   console.log(res.data)
-                // })
-                this.setState({
-                  deviceAdd: {
-                    name: e.target.value,
-                    power: this.state.deviceAdd.power
-                  }
-                })
-              }}/>
-            
+            <SearchInput
+              loading={this.state.loading}
+              options={this.state.options}
+              requests={this.getSuggestions}
+              pick={this.pickValue}
+              placeholder="Название"
+            />
               
-
-              <div className='grid_power_input'>
-                  <input className='input_power' placeholder='Мощность'
-                  onChange={(e) => {
-                    this.setState({
-                      deviceAdd: {
-                        name: this.state.deviceAdd.name,
-                        power: Number(e.target.value)
-                      }
-                    })
-                }}/>
-                  <p className='Vatts_text'>Вт</p>
-              </div>
-          </div>
           <div className='row-btn-device'>
             <button className="plus-line-btn"
             onClick={() => {
