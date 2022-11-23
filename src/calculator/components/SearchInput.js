@@ -7,6 +7,7 @@ export default function SearchInput({
     requests,
     placeholder,
     pick,
+    setPower
 }) {
     const [nameValue, setNameValue] = useState('');
     const [powerValue, setPowerValue] = useState('');
@@ -15,7 +16,6 @@ export default function SearchInput({
         setNameValue(newValue);
         requests(newValue);
     };
-
 
     return (
         <div>
@@ -29,7 +29,10 @@ export default function SearchInput({
                   <input className='input_power'
                   value={powerValue}
                   placeholder='Мощность'
-                  onChange={(input) => setPowerValue(input.target.value)}/>
+                  onChange={(input) => {
+                    setPower(input.target.value);
+                    setPowerValue(input.target.value);
+                    }}/>
                   <p className='Vatts_text'>Вт</p>
               </div>
               </div>
