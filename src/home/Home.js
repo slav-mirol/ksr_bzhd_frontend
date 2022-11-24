@@ -39,6 +39,11 @@ const Home = (props) => {
                     <div className='button-text'>НАЧАТЬ</div>
                 </button>
             </Link>
+            <Link to="/about">
+              <button className='button-start'>
+                  <div className='button-text-team'>О КОМАНДЕ</div>
+              </button>
+            </Link>
           </section>
           <section className='right-wrapper'>
             <img className='right-picture' style={{}} ref={rightPictureRef} src={RightPicture} alt='Правая загагуля'/>

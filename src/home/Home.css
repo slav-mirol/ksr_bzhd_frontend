@@ -188,6 +188,21 @@ a {
     color: #FFFFFF;
 }
 
+.button-text-team {
+    width: 218px;
+    height: 49px;
+
+    font-family: 'KyivType Sans';
+    font-style: normal;
+    text-align: center;
+    font-weight: 350;
+    font-size: 28px;
+    line-height: 44px;
+    letter-spacing: 0.085em;
+
+    color: #FFFFFF;
+}
+
 /* right section */
 .right-wrapper {
     height: 100%;
