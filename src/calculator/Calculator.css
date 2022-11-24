@@ -185,3 +185,14 @@
     margin: 0;
     padding: 10px;
 }
+
+.return-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
+    background: url('./../assets/back.png') no-repeat;
+    box-shadow: inset;
+    z-index: 100;
+}

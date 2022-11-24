@@ -3,6 +3,7 @@ import React from 'react'
 import './Calculator.css';
 import Lines from './components/Lines';
 import AddLine from './components/AddLine'
+import {Link} from "react-router-dom";
 
 class Calculator extends React.Component {
   constructor(props) {
@@ -20,6 +21,9 @@ class Calculator extends React.Component {
         <Lines lines={this.state.lines} onDelete={this.deleteLine}/>
         <AddLine onAdd={this.addLine}/>
         </div>
+        <Link to="/">
+          <div className='return-button'></div>
+        </Link>
       </main>
     )
   }
