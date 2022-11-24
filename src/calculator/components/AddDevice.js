@@ -26,13 +26,15 @@ class AddDevice extends React.Component {
       }
     };
 
+    
+
     pickValue = (dev) => {
       this.setState({
         loading: false,
         options: [],
         deviceAdd: {
           name: dev.name,
-          power: dev.power
+          power: Number(dev.power)
         }
       });
     };
@@ -41,7 +43,7 @@ class AddDevice extends React.Component {
       this.setState({
         deviceAdd: {
           name: this.state.deviceAdd.name,
-          power: pow
+          power: Number(pow)
         }
       });
     }
@@ -62,8 +64,9 @@ class AddDevice extends React.Component {
           <div className='row-btn-device'>
             <button className="plus-line-btn"
             onClick={() => {
-
+              
               this.props.onAdd(this.state.deviceAdd.name, this.state.deviceAdd.power)
+              this.props.postSuggestions();
             }}>
               <div className="plus-btn__icon">
                 <svg

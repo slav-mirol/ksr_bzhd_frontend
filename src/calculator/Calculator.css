@@ -155,3 +155,32 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
+
+.input_temperature {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.parametersOfLine {
+    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    border-radius: 17px;
+    width: 50%;
+}
+
+.auto {
+    color: #E141D5;
+    font-size: 36px;
+    margin: 0;
+    padding: 10px;
+}
+
+.section {
+    color: #6725EB;
+    font-size: 36px;
+    margin: 0;
+    padding: 10px;
+}

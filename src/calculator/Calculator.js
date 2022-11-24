@@ -28,7 +28,8 @@ class Calculator extends React.Component {
     this.count += 1
     let cur_line = {
       id: this.count,
-      devices: []
+      devices: [],
+      temperature: 0
     }
     this.setState({
       lines: [
