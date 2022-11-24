@@ -19,7 +19,6 @@ class Line extends React.Component {
       this.countDevices = 0;
       this.addDevice = this.addDevice.bind(this)
       this.deleteDevice = this.deleteDevice.bind(this)
-      this.postSuggestions = this.postSuggestions.bind(this)
     }
     line = this.props.line;
     render() {
@@ -74,7 +73,6 @@ class Line extends React.Component {
                   nominal_amperage: this.state.nominal_amperage,
                   addedDevice: this.state.addedDevice,
                 });
-                //this.postSuggestions();
               }}/>
               <p htmlFor="cowbell">°C</p>
             </div>
@@ -89,8 +87,15 @@ class Line extends React.Component {
       )
     }
 
-    addDevice(_name,_power) {
+    async addDevice(_name,_power) {
       this.countDevices += 1;
+      let response = await postApiSuggestions(
+        {
+          devices: [...this.state.line.devices, {id: this.countDevices, name:_name,power:_power}],
+          temperature: this.state.line.temperature
+        }
+      );
+
       this.setState({
         line:{
           id: this.state.line.id,
@@ -99,34 +104,30 @@ class Line extends React.Component {
           ],
           temperature: this.state.line.temperature,
         },
+        square: response.square,
+        nominal_amperage: response.nominal_amperage,
         addedDevice: true
       })
-      //this.postSuggestions();
     }
 
-    deleteDevice(num) {
+    async deleteDevice(num) {
+      let response = await postApiSuggestions(
+        {
+          devices: this.state.line.devices.filter((el) => el.id !== num),
+          temperature: this.state.line.temperature
+        }
+      );
       this.setState({
         line:{
           id: this.state.line.id,
           devices: this.state.line.devices.filter((el) => el.id !== num),
+          temperature: this.state.line.temperature,
         },
+        square: response.square,
+        nominal_amperage: response.nominal_amperage,
+        addedDevice: true,
       });
-      this.postSuggestions();
     }
-  
-   async postSuggestions() {
-        let response = await postApiSuggestions(
-          {
-            devices: this.state.line.devices,
-            temperature: this.state.line.temperature
-          }
-        );
-        this.setState({
-          line: this.state.line,
-          square: response.square,
-          nominal_amperage: response.nominal_amperage,
-        });
-    };
 }
 
   export default Line;

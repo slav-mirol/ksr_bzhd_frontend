@@ -65,8 +65,8 @@ class AddDevice extends React.Component {
             <button className="plus-line-btn"
             onClick={() => {
               
-              this.props.onAdd(this.state.deviceAdd.name, this.state.deviceAdd.power)
-              this.props.postSuggestions();
+              this.props.onAdd(this.state.deviceAdd.name, this.state.deviceAdd.power);
+              //this.props.postSuggestions();
             }}>
               <div className="plus-btn__icon">
                 <svg
