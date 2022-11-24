@@ -43,6 +43,7 @@
 .background-line {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     width: 55%;
     padding: 15px;
     height: 86px;
@@ -80,7 +81,7 @@
 .minus-line-btn {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     background: transparent;
     width: 77px;
     height: 77px;

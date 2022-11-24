@@ -23,11 +23,6 @@ export const getApiSuggestions = (word) => {
 };
 
 export const postApiSuggestions = (line) => {
-    console.log(JSON.stringify(line));
-    const obj = {
-        "devices": line.devices, "temperature": line.temperature
-    }
-    console.log(obj);
     let result = url
       .post(`api/line`, JSON.stringify(line), config)
       .then((response) => {
