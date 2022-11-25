@@ -7,7 +7,7 @@ class Line extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        name: '',
+        name: 'Линия',
         line:{
           id: 0,
           devices: [],
@@ -45,7 +45,7 @@ class Line extends React.Component {
               <div className='background-line'>
                 {!this.state.editLine && !this.state.name && <p className='line'>Линия</p>}
                 {!this.state.editLine && this.state.name && <p className='line'>{this.state.name}</p>}
-                {this.state.editLine && <input placeholder='Введите название линии' onChange = {(e) => {
+                {this.state.editLine && <input className='input_line' value={this.state.name} placeholder='Введите название линии' onChange = {(e) => {
                   this.setState({
                     name: e.target.value,
                     line: this.state.line,
@@ -57,6 +57,7 @@ class Line extends React.Component {
                 }} />}
                 {!this.state.editLine && <button className="minus-line-btn" onClick={() => {
                   this.setState({
+                    name: this.state.name==='' ? "Линия" : this.state.name,
                     line: this.state.line,
                     square: this.state.square,
                     nominal_amperage: this.state.nominal_amperage,
@@ -94,7 +95,8 @@ class Line extends React.Component {
             <Devices devices={this.state.line.devices} onDelete={this.deleteDevice}/>
             <AddDevice onAdd={this.addDevice} postSuggestions={this.postSuggestions}/>
             <div className='input_temperature'>
-              <input type="range" className="temperature" min="-40" max="50" onChange={ (v) => {
+              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-50 °C</p>
+              <input type="range" id='range' className="temperature" min="-50" max="60" value={this.state.line.temperature} onChange={ (v) => {
                 this.setState({
                   line: {
                     id: this.state.line.id,
@@ -106,8 +108,10 @@ class Line extends React.Component {
                   addedDevice: this.state.addedDevice,
                 });
               }}/>
-              <p htmlFor="cowbell">°C</p>
+              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">60 °C</p>
+              
             </div>
+            <p style={{marginLeft:150-(60-this.state.line.temperature),marginTop:0}}>{this.state.line.temperature} °C</p>
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Площадь сечения:</p>

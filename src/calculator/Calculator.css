@@ -196,3 +196,11 @@
     box-shadow: inset;
     z-index: 100;
 }
+
+.input_line {
+    width: 80%;
+    background: transparent;
+    font-size: 44px;
+    font-family: 'KyivType Sans';
+    font-style: normal;
+}
