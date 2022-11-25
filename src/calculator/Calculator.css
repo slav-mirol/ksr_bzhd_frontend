@@ -1,3 +1,198 @@
-.bycyclist-text {
+.empty-line-text {
     text-align: center;
+    font-size: 44px;
+    padding: 44px;
+    margin: 0px
+}
+
+.empty-devices-text {
+    font-size: 44px;
+    margin: 0px
+}
+
+.Vatts_text {
+    padding-left: 10px;
+    font-size: 44px;
+    margin: 0px;
+    color: rgba(241, 86, 155, 1);
+}
+
+.row-btn-line{
+    display: grid;
+    grid-template-columns: 77px 1fr;
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.row-btn-device {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.edit-line{
+    display: flex;
+    grid-template-rows: auto;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.background-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 55%;
+    padding: 15px;
+    height: 86px;
+    border-radius: 60px;
+    background: linear-gradient(45deg, #E141D5 33%, #6725EB);
+}
+
+.background-device {
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+    padding: 15px;
+    min-height: 86px;
+}
+
+.line {
+    font-size: 44px;
+    margin: 0px;
+}
+
+.addLineText {
+    font-size: 44px;
+    margin: 0px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+.background-addLine {
+    padding: 15px;
+    height: 86px;
+}
+
+
+.minus-line-btn {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    background: transparent;
+    width: 77px;
+    height: 77px;
+    border-width: 0px;
+    cursor: pointer;
+}
+
+.minus-line-btn:focus {
+    border: 2px solid rgba(51, 51, 51, 0.48);
+}
+
+.plus-line-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    width: 77px;
+    height: 77px;
+    border-width: 0px;
+    cursor: pointer;
+}
+
+.left_margin {
+    padding-top: 10px;
+    margin-left: 162px;
+}
+
+.grid_power_input {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 272px 1fr;
+    grid-template-rows: auto;
+}
+
+
+.input_name {
+    background-color: rgba(166, 49, 238, 0.24);
+    width: 272px;
+    height: 68px;
+    border-radius: 17px;
+    font-size: 44px;
+    font-family: 'KyivType Sans';
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.4);
+    margin-right: 24px;
+}
+
+
+.input_power {
+    background-color: rgba(240, 79, 163, 0.43);
+    width: 272px;
+    height: 68px;
+    border-radius: 17px;
+    font-size: 44px;
+    font-family: 'KyivType Sans';
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.4);
+
+}
+
+.devices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 150px;
+}
+
+.row-btn-device {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.input_temperature {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.parametersOfLine {
+    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    border-radius: 17px;
+    width: 50%;
+}
+
+.auto {
+    color: #E141D5;
+    font-size: 36px;
+    margin: 0;
+    padding: 10px;
+}
+
+.section {
+    color: #6725EB;
+    font-size: 36px;
+    margin: 0;
+    padding: 10px;
+}
+
+.return-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
+    background: url('./../assets/back.png') no-repeat;
+    box-shadow: inset;
+    z-index: 100;
 }

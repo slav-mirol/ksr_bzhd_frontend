@@ -1,0 +1,154 @@
+.about {
+
+}
+
+.images-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding-top: 10%;
+}
+
+.picture-title {
+    font-family: 'KyivType Sans';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 100px;
+    line-height: 145px;
+    width: min-content;
+    letter-spacing: -0.035em;
+    margin: auto;
+
+    color: #d3d3d3;
+}
+
+.picture {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 3px 3px #EE748D, -1em 0 .4em #6825EB;
+}
+
+.jenek-picture {
+    margin-top: 100px;
+    animation-duration: 3s;
+    animation-name: jenek;
+}
+
+@keyframes jenek {
+    0% {
+        margin-left: 100%;
+        width: 300%;
+        opacity: 0;
+    }
+    75% {
+        font-size: 300%;
+        margin-left: 25%;
+        width: 150%;
+    }
+
+    100% {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.jenek-picture:hover {
+    transform: rotate3d(0, 1, 0.5, 3.142rad);
+    transition-duration: 10s;
+}
+
+.nekit-picture {
+    animation-duration: 10s;
+    animation-name: nekit;
+    transition: transform 20s ease-in-out;
+}
+
+.nekit-picture:hover {
+    transform: rotate(10000deg);
+}
+
+@keyframes nekit {
+    0% {
+        margin-left: 100%;
+        width: 300%;
+        opacity: 0;
+    }
+    60% {
+        margin-left: 100%;
+        width: 300%;
+        opacity: 0;
+    }
+    90% {
+        font-size: 300%;
+        margin-left: 25%;
+        width: 150%;
+    }
+
+    100% {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.slava-picture {
+    margin-top: 100px;
+    animation-duration: 6s;
+    animation-name: slava;
+}
+
+.slava-picture:hover {
+    transition-duration: 10s;
+    transform: rotate3d(2, -1, -1, -0.2turn);
+}
+
+@keyframes slava {
+    0% {
+        margin-left: -200%;
+        width: 300%;
+        opacity: 0;
+    }
+
+    50% {
+        margin-left: -200%;
+        width: 300%;
+        opacity: 0;
+    }
+
+    90% {
+        font-size: 300%;
+        margin-left: -25%;
+        width: 150%;
+    }
+
+    100% {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+.return-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
+    background: url('./../assets/back.png') no-repeat;
+    box-shadow: inset;
+    z-index: 100;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10000;
+    opacity: 1;
+}
+
+.video__media {
+
+}

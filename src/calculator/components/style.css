@@ -1,0 +1,36 @@
+.Autocomplite{
+    width: 222px;
+    height: 51px;
+    padding: 10px;
+    background: #f3f3f3;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+}
+
+.Ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.Li {
+    width: 222px;
+    font-weight: bold;
+    height: 51px;
+    padding: 10px;
+    background: #f5f0f0;
+    display: block;
+    border-bottom: 1px solid white;
+    
+    
+}
+
+.Li:hover{
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+.SuggestContainer{
+    height: 240px;
+    width: 242px;
+    overflow: scroll;
+}
