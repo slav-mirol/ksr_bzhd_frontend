@@ -7,11 +7,11 @@ class Line extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        name: '',
+        name: 'Линия',
         line:{
           id: 0,
           devices: [],
-          temperature: 0,
+          temperature: 55,
         },
         square: 0,
         nominal_amperage: 0,
@@ -45,7 +45,7 @@ class Line extends React.Component {
               <div className='background-line'>
                 {!this.state.editLine && !this.state.name && <p className='line'>Линия</p>}
                 {!this.state.editLine && this.state.name && <p className='line'>{this.state.name}</p>}
-                {this.state.editLine && <input placeholder='Введите название линии' onChange = {(e) => {
+                {this.state.editLine && <input className='input_line' value={this.state.name} placeholder='Введите название линии' onChange = {(e) => {
                   this.setState({
                     name: e.target.value,
                     line: this.state.line,
@@ -57,6 +57,7 @@ class Line extends React.Component {
                 }} />}
                 {!this.state.editLine && <button className="minus-line-btn" onClick={() => {
                   this.setState({
+                    name: this.state.name==='' ? "Линия" : this.state.name,
                     line: this.state.line,
                     square: this.state.square,
                     nominal_amperage: this.state.nominal_amperage,
@@ -94,19 +95,30 @@ class Line extends React.Component {
             <Devices devices={this.state.line.devices} onDelete={this.deleteDevice}/>
             <AddDevice onAdd={this.addDevice} postSuggestions={this.postSuggestions}/>
             <div className='input_temperature'>
-              <input type="range" className="temperature" min="-40" max="50" onChange={ (v) => {
+              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-50 °C</p>
+              <input type="range" className="temperature" min="-50" max="60" step='1' onChange={ async (v) => {
+                let response = await postApiSuggestions(
+                  {
+                    devices: this.state.line.devices,
+                    temperature: Number(v.target.value)
+                  }
+                )
                 this.setState({
                   line: {
                     id: this.state.line.id,
                     devices: this.state.line.devices,
                     temperature: Number(v.target.value)
                   },
-                  square: this.state.square,
-                  nominal_amperage: this.state.nominal_amperage,
+                  square: response.square,
+                  nominal_amperage: response.nominal_amperage,
                   addedDevice: this.state.addedDevice,
                 });
               }}/>
-              <p htmlFor="cowbell">°C</p>
+              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">60 °C</p>
+            </div>
+            <div style={{marginLeft:140-(55-this.state.line.temperature), display:'flex', flexDirection:'column', alignItems:'center'}}>
+              <div className='cursor'/>
+              <p style={{marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
             </div>
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
