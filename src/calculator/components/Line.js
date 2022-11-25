@@ -96,7 +96,7 @@ class Line extends React.Component {
             <AddDevice onAdd={this.addDevice} postSuggestions={this.postSuggestions}/>
             <div className='input_temperature'>
               <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-50 °C</p>
-              <input type="range" id='range' className="temperature" min="-50" max="60" value={this.state.line.temperature} onChange={ (v) => {
+              <input type="range" className="temperature" min="-50" max="60" value={this.state.line.temperature} onChange={ (v) => {
                 this.setState({
                   line: {
                     id: this.state.line.id,
@@ -109,9 +109,11 @@ class Line extends React.Component {
                 });
               }}/>
               <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">60 °C</p>
-              
             </div>
-            <p style={{marginLeft:150-(60-this.state.line.temperature),marginTop:0}}>{this.state.line.temperature} °C</p>
+            <div style={{marginLeft:150-(60-this.state.line.temperature), display:'flex', flexDirection:'column', alignItems:'center'}}>
+              <div className='cursor'/>
+              <p style={{marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
+            </div>
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Площадь сечения:</p>
