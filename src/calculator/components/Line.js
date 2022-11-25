@@ -123,9 +123,9 @@ class Line extends React.Component {
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Площадь сечения:</p>
-            <p className='section'>{this.state.square}</p>
-            <p className='auto'>Автомат:</p>
-            <p className='auto'>{this.state.nominal_amperage}</p>
+            <p className='section'>{this.state.square} мм²</p>
+            <p className='auto'>Номинальный ток автомата:</p>
+            <p className='auto'>{this.state.nominal_amperage} А</p>
           </div>}
         </div>
       )
@@ -169,7 +169,7 @@ class Line extends React.Component {
         },
         square: response.square,
         nominal_amperage: response.nominal_amperage,
-        addedDevice: true,
+        addedDevice: this.state.line.devices.length===1 ? false : true,
       });
     }
 }

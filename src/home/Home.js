@@ -33,7 +33,7 @@ const Home = (props) => {
             <img className='mid-picture' src={MidPicture} alt='Центральная загагуля'/>
             <div className='mid-wrapper__title title'>а <span className='mid-wrapper__title_background-color'>чё</span> надо то?</div>
             <div className='mid-wrapper__subtitle subtitle'>/когда лень думать самому/</div>
-            <div className='mid-wrapper__subsubtitle subtitle'>помощь в выборе <span className='mid-wrapper__subsubtitle_pink-color'>УЗО</span> и <span className='mid-wrapper__subsubtitle_purple-color'>автоматических выключателей</span></div>
+            <div className='mid-wrapper__subsubtitle subtitle'>помощь в выборе <span className='mid-wrapper__subsubtitle_pink-color'>проводов</span> и <span className='mid-wrapper__subsubtitle_purple-color'>автоматических выключателей</span></div>
             <Link to="/calculator">
                 <button className='button-start'>
                     <div className='button-text'>НАЧАТЬ</div>
