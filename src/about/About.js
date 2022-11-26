@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import {Link} from "react-router-dom";
 import NekitPicture from './../assets/nekit.png';
 import JenekPicture from './../assets/jenek.png';
@@ -7,7 +7,6 @@ import Video from './../assets/video.mp4';
 import './About.css'
 
 const About = (props) => {
-   
     return (
       <div className='about'>
         <div className='images-wrapper'>
