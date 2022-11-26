@@ -12,7 +12,6 @@ const Home = (props) => {
     useEffect(() => {
       window.addEventListener('scroll', event => {
         requestAnimationFrame(() => {
-          //const rotation = window.scrollY / 10 % Math.PI;
           if (leftPictureRef && leftPictureRef.current) {
             const leftRotation = window.scrollY / 10;
             leftPictureRef.current.style.transform = `rotate(${leftRotation}deg)`;

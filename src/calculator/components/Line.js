@@ -12,9 +12,13 @@ class Line extends React.Component {
           id: 0,
           devices: [],
           temperature: 55,
+          voltage: 230
         },
         square: 0,
+        sum_power: 0,
+        current_amperage: 0,
         nominal_amperage: 0,
+        max_permissible_amperage: 0,
         addedDevice: false,
         editLine: false,
       }
@@ -22,6 +26,7 @@ class Line extends React.Component {
       this.addDevice = this.addDevice.bind(this)
       this.deleteDevice = this.deleteDevice.bind(this)
     }
+
     line = this.props.line;
     render() {
       return (
@@ -50,7 +55,10 @@ class Line extends React.Component {
                     name: e.target.value,
                     line: this.state.line,
                     square: this.state.square,
+                    sum_power: this.state.sum_power,
+                    current_amperage: this.state.current_amperage,
                     nominal_amperage: this.state.nominal_amperage,
+                    max_permissible_amperage: this.state.max_permissible_amperage,
                     addedDevice: this.state.addedDevice,
                     editLine: true,
                   })
@@ -60,7 +68,10 @@ class Line extends React.Component {
                     name: this.state.name==='' ? "Линия" : this.state.name,
                     line: this.state.line,
                     square: this.state.square,
+                    sum_power: this.state.sum_power,
+                    current_amperage: this.state.current_amperage,
                     nominal_amperage: this.state.nominal_amperage,
+                    max_permissible_amperage: this.state.max_permissible_amperage,
                     addedDevice: this.state.addedDevice,
                     editLine: true,
                   });
@@ -76,7 +87,10 @@ class Line extends React.Component {
                   this.setState({
                     line: this.state.line,
                     square: this.state.square,
+                    sum_power: this.state.sum_power,
+                    current_amperage: this.state.current_amperage,
                     nominal_amperage: this.state.nominal_amperage,
+                    max_permissible_amperage: this.state.max_permissible_amperage,
                     addedDevice: this.state.addedDevice,
                     editLine: false,
                   });
@@ -95,32 +109,43 @@ class Line extends React.Component {
             <Devices devices={this.state.line.devices} onDelete={this.deleteDevice}/>
             <AddDevice onAdd={this.addDevice} postSuggestions={this.postSuggestions}/>
             <div className='input_temperature'>
-              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-50 °C</p>
-              <input type="range" className="temperature" min="-50" max="60" step='1' onChange={ async (v) => {
+              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-45 °C</p>
+              <input type="range" className="temperature" min="-45" max="55" step='1' onChange={ async (v) => {
                 let response = await postApiSuggestions(
                   {
                     devices: this.state.line.devices,
-                    temperature: Number(v.target.value)
+                    temperature: Number(v.target.value),
+                    voltage: this.state.line.voltage
                   }
                 )
                 this.setState({
                   line: {
                     id: this.state.line.id,
                     devices: this.state.line.devices,
-                    temperature: Number(v.target.value)
+                    temperature: Number(v.target.value),
+                    voltage: this.state.line.voltage
                   },
                   square: response.square,
+                  sum_power: response.sum_power,
+                  current_amperage: response.current_amperage,
                   nominal_amperage: response.nominal_amperage,
+                  max_permissible_amperage: response.max_permissible_amperage,
                   addedDevice: this.state.addedDevice,
                 });
               }}/>
-              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">60 °C</p>
+              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">55 °C</p>
             </div>
-            <p style={{marginLeft:140-(55-this.state.line.temperature),marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
+            <p style={{marginLeft:140-(50-this.state.line.temperature),marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
+            <p className='section'>Суммарная мощность:</p>
+            <p className='section'>{this.state.sum_power} Вт</p>
+            <p className='section'>Текущиий ток:</p>
+            <p className='section'>{this.state.current_amperage} А</p>
             <p className='section'>Площадь сечения:</p>
             <p className='section'>{this.state.square} мм²</p>
+            <p className='auto'>Максимально допустимый ток:</p>
+            <p className='auto'>{this.state.max_permissible_amperage} А</p>
             <p className='auto'>Номинальный ток автомата:</p>
             <p className='auto'>{this.state.nominal_amperage} А</p>
           </div>}
@@ -128,47 +153,56 @@ class Line extends React.Component {
       )
     }
 
-    async addDevice(_name,_power) {
-      this.countDevices += 1;
-      let response = await postApiSuggestions(
-        {
-          devices: [...this.state.line.devices, {id: this.countDevices, name:_name,power:_power}],
-          temperature: this.state.line.temperature
-        }
-      );
+  async addDevice(_name,_power) {
+    this.countDevices += 1;
+    let response = await postApiSuggestions(
+      {
+        devices: [...this.state.line.devices, {id: this.countDevices, name: _name, power: _power}],
+        temperature: this.state.line.temperature,
+        voltage: this.state.line.voltage
+      }
+    );
+    this.setState({
+      line:{
+        id: this.state.line.id,
+        devices: [
+          ...this.state.line.devices, {id: this.countDevices, name: _name, power: _power}
+        ],
+        temperature: this.state.line.temperature,
+        voltage: this.state.line.voltage
+      },
+      square: response.square,
+      sum_power: response.sum_power,
+      current_amperage: response.current_amperage,
+      nominal_amperage: response.nominal_amperage,
+      max_permissible_amperage: response.max_permissible_amperage,
+      addedDevice: true
+    })
+  }
 
-      this.setState({
-        line:{
-          id: this.state.line.id,
-          devices: [
-            ...this.state.line.devices, {id: this.countDevices, name:_name,power:_power}
-          ],
-          temperature: this.state.line.temperature,
-        },
-        square: response.square,
-        nominal_amperage: response.nominal_amperage,
-        addedDevice: true
-      })
-    }
-
-    async deleteDevice(num) {
-      let response = await postApiSuggestions(
-        {
-          devices: this.state.line.devices.filter((el) => el.id !== num),
-          temperature: this.state.line.temperature
-        }
-      );
-      this.setState({
-        line:{
-          id: this.state.line.id,
-          devices: this.state.line.devices.filter((el) => el.id !== num),
-          temperature: this.state.line.temperature,
-        },
-        square: response.square,
-        nominal_amperage: response.nominal_amperage,
-        addedDevice: this.state.line.devices.length===1 ? false : true,
-      });
-    }
+  async deleteDevice(num) {
+    let response = await postApiSuggestions(
+      {
+        devices: this.state.line.devices.filter((el) => el.id !== num),
+        temperature: this.state.line.temperature,
+        voltage: this.state.line.voltage
+      }
+    );
+    this.setState({
+      line:{
+        id: this.state.line.id,
+        devices: this.state.line.devices.filter((el) => el.id !== num),
+        temperature: this.state.line.temperature,
+        voltage: this.state.line.voltage
+      },
+      square: response.square,
+      sum_power: response.sum_power,
+      current_amperage: response.current_amperage,
+      nominal_amperage: response.nominal_amperage,
+      max_permissible_amperage: response.max_permissible_amperage,
+      addedDevice: this.state.line.devices.length===1 ? false : true,
+    });
+  }
 }
 
-  export default Line;
+export default Line;

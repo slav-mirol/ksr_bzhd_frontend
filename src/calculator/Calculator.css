@@ -23,7 +23,6 @@
     grid-template-rows: auto;
     justify-content: center;
     align-items: center;
-
 }
 
 .row-btn-device {
@@ -70,13 +69,10 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
-
-
 .background-addLine {
     padding: 15px;
     height: 86px;
 }
-
 
 .minus-line-btn {
     display: flex;
@@ -116,7 +112,6 @@
     grid-template-rows: auto;
 }
 
-
 .input_name {
     background-color: rgba(166, 49, 238, 0.24);
     width: 272px;
@@ -129,7 +124,6 @@
     margin-right: 24px;
 }
 
-
 .input_power {
     background-color: rgba(240, 79, 163, 0.43);
     width: 272px;
@@ -139,7 +133,6 @@
     font-family: 'KyivType Sans';
     font-style: normal;
     color: rgba(0, 0, 0, 0.4);
-
 }
 
 .devices {
@@ -162,11 +155,11 @@
     flex-direction: row;
 }
 
-
 .parametersOfLine {
     margin-left: 150px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
     background-color: #D9D9D9;
     border-radius: 17px;
     width: 50%;

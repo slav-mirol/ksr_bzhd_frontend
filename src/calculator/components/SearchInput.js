@@ -19,12 +19,12 @@ export default function SearchInput({
 
     return (
         <div>
-        <div className='row-btn-device'>
-            <input className='input_name'
-                value={nameValue}
-                onChange={(input) => updateValue(input.target.value)}
-                placeholder={placeholder}
-            />
+            <div className='row-btn-device'>
+                <input className='input_name'
+                    value={nameValue}
+                    onChange={(input) => updateValue(input.target.value)}
+                    placeholder={placeholder}
+                />
             <div className='grid_power_input'>
                   <input className='input_power'
                   value={powerValue}
@@ -43,15 +43,14 @@ export default function SearchInput({
                     <div className='Ul'>
                         {options?.map((value, index) => {
                             return <button className='Li' key={`${value.power}-${index}`}
-                            onClick={() => {
-                                pick(value);
-                                setPowerValue(value.power);
-                                setNameValue(value.name);
-                            }}>{value.name}, {value.power} Вт</button>
+                                onClick={() => {
+                                    pick(value);
+                                    setPowerValue(value.power);
+                                    setNameValue(value.name);
+                                }}>{value.name}, {value.power} Вт</button>
                         })}
                 </div>
             </div>}
-            
         </div>
     );
 }

@@ -9,7 +9,9 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props)
     this.count = 0;
-    this.state = { lines: [] }
+    this.state = {
+      lines: []
+    }
     this.addLine = this.addLine.bind(this)
     this.deleteLine = this.deleteLine.bind(this)
   }
@@ -18,8 +20,8 @@ class Calculator extends React.Component {
     return (
       <main>
         <div className='left_margin'>
-        <Lines lines={this.state.lines} onDelete={this.deleteLine}/>
-        <AddLine onAdd={this.addLine}/>
+          <Lines lines={this.state.lines} onDelete={this.deleteLine}/>
+          <AddLine onAdd={this.addLine}/>
         </div>
         <Link to="/">
           <div className='return-button'></div>
@@ -41,7 +43,6 @@ class Calculator extends React.Component {
       ]
     })
   }
-
 
   deleteLine(num) {
     this.setState({
