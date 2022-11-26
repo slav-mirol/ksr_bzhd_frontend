@@ -17,16 +17,22 @@ class AddDevice extends React.Component {
 
     getSuggestions = async (word) => {
       if (word) {
-          this.setState({loading:true});
+          this.setState({
+            loading: true
+          });
           let response = await getApiSuggestions(word);
-          this.setState({options:response});
-          this.setState({loading:false});
+          this.setState({
+            options: response
+          });
+          this.setState({
+            loading: false
+          });
       } else {
-        this.setState({options:[]});
+        this.setState({
+          options: []
+        });
       }
     };
-
-    
 
     pickValue = (dev) => {
       this.setState({
@@ -52,22 +58,20 @@ class AddDevice extends React.Component {
     render() {
       return (
         <div>
-            <SearchInput
-              loading={this.state.loading}
-              options={this.state.options}
-              requests={this.getSuggestions}
-              pick={this.pickValue}
-              setPower={this.setPower}
-              placeholder="Название"
-            />
-              
+          <SearchInput
+            loading={this.state.loading}
+            options={this.state.options}
+            requests={this.getSuggestions}
+            pick={this.pickValue}
+            setPower={this.setPower}
+            placeholder="Название"
+          />     
           <div className='row-btn-device'>
             <button className="plus-line-btn"
-            onClick={() => {
-              
-              this.props.onAdd(this.state.deviceAdd.name, this.state.deviceAdd.power);
+              onClick={() => {  
+                this.props.onAdd(this.state.deviceAdd.name, this.state.deviceAdd.power);
               //this.props.postSuggestions();
-            }}>
+              }}> 
               <div className="plus-btn__icon">
                 <svg
                   width="74"

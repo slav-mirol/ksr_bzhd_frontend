@@ -1,7 +1,7 @@
 import React from 'react'
 import Device from "./Device"
-class Devices extends React.Component {
 
+class Devices extends React.Component {
     render() {
       if (this.props.devices.length > 0) {
         return (

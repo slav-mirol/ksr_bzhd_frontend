@@ -14,9 +14,9 @@ class AddLine extends React.Component {
       return (
         <div className='row-btn-line'>
           <button className="plus-line-btn"
-          onClick={() => {
-            this.props.onAdd(this.state.lineAdd)
-          }}>
+            onClick={() => {
+              this.props.onAdd(this.state.lineAdd)
+            }}>
             <div className="plus-btn__icon">
               <svg
                 width="74"
