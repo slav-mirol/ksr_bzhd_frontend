@@ -67,8 +67,8 @@ class Line extends React.Component {
                 }}>
                   <div className="edit-btn__icon">
                     <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M14.9062 38.0938H38.0937" stroke="white" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M14.9062 31.4687V24.8437L30.0115 10.8174C30.2086 10.6344 30.5151 10.6401 30.7053 10.8303L35.5447 15.6697C35.7349 15.8599 35.7406 16.1664 35.5576 16.3635L21.5312 31.4687H14.9062Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14.9062 38.0938H38.0937" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M14.9062 31.4687V24.8437L30.0115 10.8174C30.2086 10.6344 30.5151 10.6401 30.7053 10.8303L35.5447 15.6697C35.7349 15.8599 35.7406 16.1664 35.5576 16.3635L21.5312 31.4687H14.9062Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </button>}
@@ -83,8 +83,8 @@ class Line extends React.Component {
                 }}>
                   <div className="edit-btn__icon">
                     <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M14.9062 38.0938H38.0937" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M14.9062 31.4687V24.8437L30.0115 10.8174C30.2086 10.6344 30.5151 10.6401 30.7053 10.8303L35.5447 15.6697C35.7349 15.8599 35.7406 16.1664 35.5576 16.3635L21.5312 31.4687H14.9062Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14.9062 38.0938H38.0937" stroke="white" stroke-width="2" strokeLinecap="round" stroke-Linejoin="round"/>
+                      <path d="M14.9062 31.4687V24.8437L30.0115 10.8174C30.2086 10.6344 30.5151 10.6401 30.7053 10.8303L35.5447 15.6697C35.7349 15.8599 35.7406 16.1664 35.5576 16.3635L21.5312 31.4687H14.9062Z" stroke="white" stroke-width="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </button>}
@@ -116,10 +116,7 @@ class Line extends React.Component {
               }}/>
               <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">60 °C</p>
             </div>
-            <div style={{marginLeft:140-(55-this.state.line.temperature), display:'flex', flexDirection:'column', alignItems:'center'}}>
-              <div className='cursor'/>
-              <p style={{marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
-            </div>
+            <p style={{marginLeft:140-(55-this.state.line.temperature),marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Площадь сечения:</p>
