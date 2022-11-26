@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const url = axios.create({
-    baseURL: 'http://84.201.179.25/',
+    baseURL: 'http://51.250.24.195/',
 });
 
 const config = {
