@@ -163,6 +163,8 @@
     background-color: #D9D9D9;
     border-radius: 17px;
     width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .auto {
@@ -196,4 +198,33 @@
     font-size: 44px;
     font-family: 'KyivType Sans';
     font-style: normal;
+}
+
+.input_voltage {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    border-radius: 15px;
+    border: 2px solid;
+    padding: 10px;
+    margin-left: 10px;
+    border-color: grey;
+}
+
+.voltage_btn {
+    z-index: 2;
+    background: transparent;
+    border: transparent;
+    border-radius: 16px;
+    margin-right: 5px;
+}
+
+.background_voltage {
+    z-index: 1;
+    border-radius: 15px;
+    margin-left:0px;
+    background-color: transparent;
+}
+@keyframes move {
+    50% {margin-left: 160px;}
 }

@@ -7,7 +7,7 @@ class Lines extends React.Component {
         return (
           <div>
             {this.props.lines.map((elem) => (
-              <Line onDelete={this.props.onDelete} key={elem.id} line={elem} />
+              <Line onDelete={this.props.onDelete} key={elem.id} line={elem}/>
             ))}
           </div>
         )
