@@ -20,13 +20,13 @@ export default function SearchInput({
     return (
         <div>
             <div className='row-btn-device'>
-                <input className='input_name'
+                <input className='input_name' id='inp_name_device'
                     value={nameValue}
                     onChange={(input) => updateValue(input.target.value)}
                     placeholder={placeholder}
                 />
             <div className='grid_power_input'>
-                  <input className='input_power'
+                  <input className='input_power' id='inp_power_device'
                   value={powerValue}
                   placeholder='Мощность'
                   onChange={(input) => {

@@ -27,10 +27,12 @@ class Line extends React.Component {
       this.deleteDevice = this.deleteDevice.bind(this)
     }
 
-    line = this.props.line;
+    line_num = this.props.line.id;
+    id_volt_l='background_voltage_left' + this.line_num;
+    id_volt_r='background_voltage_right' + this.line_num;
     render() {
       return (
-        <div>
+        <div style={{padding:15}}>
           <div className='row-btn-line'>
             <button className="minus-line-btn"
               onClick={() => this.props.onDelete(this.props.line.id)}>
@@ -108,34 +110,98 @@ class Line extends React.Component {
           <div className='devices'>
             <Devices devices={this.state.line.devices} onDelete={this.deleteDevice}/>
             <AddDevice onAdd={this.addDevice} postSuggestions={this.postSuggestions}/>
-            <div className='input_temperature'>
-              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-45 °C</p>
-              <input type="range" className="temperature" min="-45" max="55" step='1' onChange={ async (v) => {
-                let response = await postApiSuggestions(
-                  {
-                    devices: this.state.line.devices,
-                    temperature: Number(v.target.value),
-                    voltage: this.state.line.voltage
-                  }
-                )
-                this.setState({
-                  line: {
-                    id: this.state.line.id,
-                    devices: this.state.line.devices,
-                    temperature: Number(v.target.value),
-                    voltage: this.state.line.voltage
-                  },
-                  square: response.square,
-                  sum_power: response.sum_power,
-                  current_amperage: response.current_amperage,
-                  nominal_amperage: response.nominal_amperage,
-                  max_permissible_amperage: response.max_permissible_amperage,
-                  addedDevice: this.state.addedDevice,
-                });
-              }}/>
-              <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">55 °C</p>
+            <div className='input_parametrs' style={{display: 'flex', flexDirection: 'row', alignItems:'center'}}>
+              <div style={{display: 'flex', flexDirection: 'column'}}>
+                <div className='input_temperature'>
+                  <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">-45 °C</p>
+                  <input type="range" className="temperature" min="-45" max="55" step='1' onChange={ async (v) => {
+                    let response = await postApiSuggestions(
+                      {
+                        devices: this.state.line.devices,
+                        temperature: Number(v.target.value),
+                        voltage: this.state.line.voltage
+                      }
+                    )
+                    this.setState({
+                      line: {
+                        id: this.state.line.id,
+                        devices: this.state.line.devices,
+                        temperature: Number(v.target.value),
+                        voltage: this.state.line.voltage
+                      },
+                      square: response.square,
+                      sum_power: response.sum_power,
+                      current_amperage: response.current_amperage,
+                      nominal_amperage: response.nominal_amperage,
+                      max_permissible_amperage: response.max_permissible_amperage,
+                      addedDevice: this.state.addedDevice,
+                    });
+                  }}/>
+                  <p style={{marginBottom:5,marginTop:5}} htmlFor="cowbell">55 °C</p>
+                </div>
+                <p style={{marginLeft:140-(50-this.state.line.temperature),marginTop:0,whiteSpace:'nowrap', width:50, marginBottom:0,}}>{this.state.line.temperature} °C</p>
+              </div>
+              <div className='input_voltage'>
+                <div className='background_voltage' id={this.id_volt_l}>
+                  <button className='voltage_btn' id='left-btn' onClick={ async () => {
+                    document.getElementById(this.id_volt_l).style.background = 'white';
+                    document.getElementById(this.id_volt_r).style.background = 'transparent';
+                    let response = await postApiSuggestions(
+                      {
+                        devices: this.state.line.devices,
+                        temperature: this.state.line.temperature,
+                        voltage: 230
+                      }
+                    )
+                    this.setState({
+                      line: {
+                        id: this.state.line.id,
+                        devices: this.state.line.devices,
+                        temperature: this.state.line.temperature,
+                        voltage: 230
+                      },
+                      square: response.square,
+                      sum_power: response.sum_power,
+                      current_amperage: response.current_amperage,
+                      nominal_amperage: response.nominal_amperage,
+                      max_permissible_amperage: response.max_permissible_amperage,
+                      addedDevice: this.state.addedDevice,
+                    })
+                  }}>
+                    <p className='section'>230 В</p>
+                  </button>
+                </div>
+                <div className='background_voltage' id={this.id_volt_r}>
+                <button className='voltage_btn' id='right-btn' onClick={ async () => {
+                  document.getElementById(this.id_volt_r).style.background = 'white';
+                  document.getElementById(this.id_volt_l).style.background = 'transparent';
+                  let response = await postApiSuggestions(
+                    {
+                      devices: this.state.line.devices,
+                      temperature: this.state.line.temperature,
+                      voltage: 380
+                    }
+                  )
+                  this.setState({
+                    line: {
+                      id: this.state.line.id,
+                      devices: this.state.line.devices,
+                      temperature: this.state.line.temperature,
+                      voltage: 380
+                    },
+                    square: response.square,
+                    sum_power: response.sum_power,
+                    current_amperage: response.current_amperage,
+                    nominal_amperage: response.nominal_amperage,
+                    max_permissible_amperage: response.max_permissible_amperage,
+                    addedDevice: this.state.addedDevice,
+                  })
+                }}>
+                  <p className='section'>380 В</p>
+                </button>
+                </div>
+              </div>
             </div>
-            <p style={{marginLeft:140-(50-this.state.line.temperature),marginTop:0,whiteSpace:'nowrap', width:50 }}>{this.state.line.temperature} °C</p>
           </div>
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Суммарная мощность:</p>
@@ -154,6 +220,8 @@ class Line extends React.Component {
     }
 
   async addDevice(_name,_power) {
+    document.getElementById("inp_name_device").value = "";
+    document.getElementById("inp_power_device").value = "";
     this.countDevices += 1;
     let response = await postApiSuggestions(
       {
