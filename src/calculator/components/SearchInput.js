@@ -7,7 +7,8 @@ export default function SearchInput({
     requests,
     placeholder,
     pick,
-    setPower
+    setPower,
+    setName
 }) {
     const [nameValue, setNameValue] = useState('');
     const [powerValue, setPowerValue] = useState('');
@@ -22,7 +23,11 @@ export default function SearchInput({
             <div className='row-btn-device'>
                 <input className='input_name' id='inp_name_device'
                     value={nameValue}
-                    onChange={(input) => updateValue(input.target.value)}
+                    onChange={(input) =>{
+                         setName(input.target.value);
+                         updateValue(input.target.value);
+                        }
+                    }
                     placeholder={placeholder}
                 />
             <div className='grid_power_input'>

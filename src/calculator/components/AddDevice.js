@@ -44,6 +44,15 @@ class AddDevice extends React.Component {
         }
       });
     };
+
+    setName = (name) => {
+      this.setState({
+        deviceAdd: {
+          name: name,
+          power: this.state.deviceAdd.power
+        }
+      });
+    }
     
     setPower = (pow) => {
       this.setState({
@@ -64,6 +73,7 @@ class AddDevice extends React.Component {
             requests={this.getSuggestions}
             pick={this.pickValue}
             setPower={this.setPower}
+            setName={this.setName}
             placeholder="Название"
           />     
           <div className='row-btn-device'>

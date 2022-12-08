@@ -30,6 +30,8 @@ class Line extends React.Component {
     line_num = this.props.line.id;
     id_volt_l='background_voltage_left' + this.line_num;
     id_volt_r='background_voltage_right' + this.line_num;
+    id_name_d='id_name_d' + this.line_num;
+    id_name_d='id_name_d' + this.line_num;
     render() {
       return (
         <div style={{padding:15}}>
@@ -220,8 +222,6 @@ class Line extends React.Component {
     }
 
   async addDevice(_name,_power) {
-    document.getElementById("inp_name_device").value = "";
-    document.getElementById("inp_power_device").value = "";
     this.countDevices += 1;
     let response = await postApiSuggestions(
       {
@@ -246,6 +246,8 @@ class Line extends React.Component {
       max_permissible_amperage: response.max_permissible_amperage,
       addedDevice: true
     })
+    document.getElementById("inp_name_device").value = "";
+    document.getElementById("inp_power_device").value = "";
   }
 
   async deleteDevice(num) {
