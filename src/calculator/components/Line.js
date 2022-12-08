@@ -212,7 +212,7 @@ class Line extends React.Component {
             <p className='section'>{this.state.current_amperage} А</p>
             <p className='section'>Площадь сечения:</p>
             <p className='section'>{this.state.square} мм²</p>
-            <p className='auto'>Максимально допустимый ток:</p>
+            <p className='auto'>Условный ток расцепления:</p>
             <p className='auto'>{this.state.max_permissible_amperage} А</p>
             <p className='auto'>Номинальный ток автомата:</p>
             <p className='auto'>{this.state.nominal_amperage} А</p>
