@@ -208,7 +208,7 @@ class Line extends React.Component {
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Суммарная мощность:</p>
             <p className='section'>{this.state.sum_power} Вт</p>
-            <p className='section'>Текущиий ток:</p>
+            <p className='section'>Рабочий ток цепи:</p>
             <p className='section'>{this.state.current_amperage} А</p>
             <p className='section'>Площадь сечения:</p>
             <p className='section'>{this.state.square} мм²</p>
