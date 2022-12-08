@@ -246,8 +246,8 @@ class Line extends React.Component {
       max_permissible_amperage: response.max_permissible_amperage,
       addedDevice: true
     })
-    document.getElementById("inp_name_device").value = "";
-    document.getElementById("inp_power_device").value = "";
+    //document.getElementById("inp_name_device" + this.state.line.id).value = "";
+    //document.getElementById("inp_power_device" + this.state.line.id).value = "";
   }
 
   async deleteDevice(num) {
