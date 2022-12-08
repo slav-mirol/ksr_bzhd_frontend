@@ -216,7 +216,7 @@ class Line extends React.Component {
             <p className='auto'>{this.state.max_permissible_amperage} А</p>
             <p className='auto'>Номинальный ток автомата:</p>
             <p className='auto'>{this.state.nominal_amperage} А</p>
-            <p style={{marginLeft:10}}><a href='http://pue7.ru/pue7/punkt.php?n=1.3.10&k=1.3.26'>ПУЭ-7 1.3.6</a></p>
+            <p style={{marginLeft:10}}><a href='http://pue7.ru/pue7/punkt.php?n=1.3.10&k=1.3.26'>ПУЭ-7 1.3</a></p>
           </div> }
         </div>
       )
