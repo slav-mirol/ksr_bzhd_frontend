@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const url = axios.create({
-    baseURL: 'http://' + process.env.URL + '/',
+    baseURL: 'http://51.250.104.38/',
 });
 
 const config = {
