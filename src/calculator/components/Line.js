@@ -30,6 +30,8 @@ class Line extends React.Component {
     line_num = this.props.line.id;
     id_volt_l='background_voltage_left' + this.line_num;
     id_volt_r='background_voltage_right' + this.line_num;
+    id_name_d='id_name_d' + this.line_num;
+    //id_name_d='id_name_d' + this.line_num;
     render() {
       return (
         <div style={{padding:15}}>
@@ -206,22 +208,21 @@ class Line extends React.Component {
           {this.state.addedDevice && <div className='parametersOfLine'>
             <p className='section'>Суммарная мощность:</p>
             <p className='section'>{this.state.sum_power} Вт</p>
-            <p className='section'>Текущиий ток:</p>
+            <p className='section'>Рабочий ток цепи:</p>
             <p className='section'>{this.state.current_amperage} А</p>
             <p className='section'>Площадь сечения:</p>
             <p className='section'>{this.state.square} мм²</p>
-            <p className='auto'>Максимально допустимый ток:</p>
+            <p className='auto'>Условный ток расцепления:</p>
             <p className='auto'>{this.state.max_permissible_amperage} А</p>
             <p className='auto'>Номинальный ток автомата:</p>
             <p className='auto'>{this.state.nominal_amperage} А</p>
-          </div>}
+            <p style={{marginLeft:10}}><a href='http://pue7.ru/pue7/punkt.php?n=1.3.10&k=1.3.26'>ПУЭ-7 1.3.6</a></p>
+          </div> }
         </div>
       )
     }
 
   async addDevice(_name,_power) {
-    document.getElementById("inp_name_device").value = "";
-    document.getElementById("inp_power_device").value = "";
     this.countDevices += 1;
     let response = await postApiSuggestions(
       {
@@ -246,6 +247,8 @@ class Line extends React.Component {
       max_permissible_amperage: response.max_permissible_amperage,
       addedDevice: true
     })
+    //document.getElementById("inp_name_device" + this.state.line.id).value = "";
+    //document.getElementById("inp_power_device" + this.state.line.id).value = "";
   }
 
   async deleteDevice(num) {
